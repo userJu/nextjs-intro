@@ -14,15 +14,7 @@ export default function Home({ results }) {
   // }, []);
 
   const onClick = (id, title) => {
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title,
-        },
-      },
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
 
   return (
@@ -38,13 +30,7 @@ export default function Home({ results }) {
             {movie.original_title}
           </button>
           <Link
-            href={{
-              pathname: `/movies/${movie.id}`,
-              query: {
-                title: movie.original_title,
-              },
-            }}
-            as={`/movies/${movie.id}`}
+            href={`/movies/${movie.original_title}/${movie.id}`}
             key={movie.id}
           >
             <a href="">
